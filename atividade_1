@@ -1,0 +1,99 @@
+# Parte 1: Concepção
+
+### Integrantes
+| Nome           | RA       | 
+| -------------- | -------- | 
+| André Barbosa  | 11001814 | 
+| Iasmin         | 11018111 |
+| Victor Fischer | 11009116 |
+| Lucas Oliveira | 11056816 |
+
+### Repositório
+O projeto será versionado em [Github/VFS/pp201802](https://github.com/VFS/pp201802/new/master)
+
+##Objetivos:
+
+
+
+### Refinar o escopo da aplicação;
+- Servidor permite uma quantidade arbitrária de salas simultâneas.
+- Cada sala permite até 8 jogadores
+- Dois baralhos de 52 cartas (2:10, JQKA)
+- Cliente possui uma 
+
+- Objetivo: Fazer trincas (nipes distintos) ou seqüencias para bater.
+
+1. Jogador A se conecta ao servidor e cria uma sala
+2. Jogador B e C se conectam ao servidor e em seguida se conectam à sala
+3. Jogadores enviam o comando \preparado. 
+4. Se todos os jogadores estiverem preparados, o servidor inicia dois baralhos novos, únicos para essa sala. Os baralhos são embaralhados e cada jogador recebe 9 cartas.
+5. O servidor sorteia qual será a sequencia de jogadores. Essa informação aparece em todos os clientes.
+6. Na vez do jogador, ele pode enviar \comprar_baralho ou \comprar_lixo. Sua mão aumentará para 10 cartas. 
+7. A qualquer momento o jogador pode enviar o comando \bater, para declarar que está com combinações de carta válidas. Ele entra na fila de validação, e o servidor verifica se é uma mão batível. Caso negativo, o jogador fica queimado e não pode mais comprar do lixo.
+8. Após comprar uma carta, o jogodor deve descartar, informando apenas qual carta deseja descartar. ``.
+
+
+
+
+- trinca: três cartas do mesmo valor e de naipes diferentes, sendo que os jogadores poderão agregar uma ou duas cartas do mesmo valor, desde que seja dobrada (do mesmo naipe). Exemplo: 5 de Copas, 5 de Paus, 5 de Ouros e outro 5 de Ouros.
+- Sequência: três ou mais cartas seguidas, do mesmo naipe). O Ás, nas sequências, pode servir acima do Rei ou abaixo do Dois.
+- Rodada: uma sequência de jogadas que ocorre até que algum jogador bata.
+- Bater: combinar e baixar as nove cartas ou as 10 cartas (as nove que recebeu mais a da compra), formando trincas e/ou sequências.
+- Ordem das cartas (da menor para maior): A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K.
+- Maço: é o bolo de cartas que sobra após a distribuição.
+- Lixeira: é o bolo formado com as cartas descartadas, onde apenas a última carta é visível.
+
+
+
+### Introdução
+Pessoas em diferentes locais desejam jogar um jogo de pife. Todos têm que sacar do mesmo baralho, descartar na mesma pilha e garantir que a ordem dos jogadores seja respeitada.
+O projeto *PP4PP - Piff-paff para paradigmas da programação* consiste em implementar o jogo multi-usuário Piff-Paff utilizando o paradigma funcional por meio da linguagem Racket.
+O programa também deve controlar as cartas que cada jogador tem em mãos. Além disso é interessante que o sistema possa dizer quem venceu a rodada.
+
+Vantagens das implementações já existentes:
+- Base de usuários consolidada.
+- Interface com acabamento gráfico.
+
+Desvantagens das implementações já existentes:
+- Atualmente o jogo é implementado com linguagens imperativas/declarativas, o que prejudica a performance (????)
+- Dependem da instalação de plugins proprietáios (Flash Player)
+
+
+O programa também deve controlar as cartas que cada jogador tem em mãos. Além disso é interessante que o sistema possa dizer quem venceu a rodada.Atualmente o jogo é implementado com linguagens imperativas/declarativas
+
+
+
+### Metodologia a ser empregada.
+???
+
+#### Quais são os principais componentes previstos para a arquitetura da aplicação? Apresentar diagrama.
+Aplicação cliente-servidor.
+* Cliente: Aplicação em Racket, que se conecta ao servidor e pode enviar comandos de jogador.
+* Servidor: Aplicação em Racket, reponsável por gerenciar o baralho, receber os comandos dos jogadores e tratar os resultados.
+
+##### Comandos de Cliente:
+\create [nome_da_sala]: cria uma sala nova
+\join [nome_da_sala]: ingressa em uma sala existente
+\pronto
+\comprar_baralho
+\comprar_lixo
+\descartar [A]
+\bater
+\reordenar [A A A A A A A A A ]
+
+Comandos de Servidor:
+\criar baralho
+\embaralhar
+\distribuir_inicio
+\valida_batida [A A A A A A A A A A]
+
+
+
+
+
+#### Que tipos de dados serão processados pela aplicação?
+#### Quais são as aplicações similares ou relacionadas com a que você está propondo? (Citar adequadamente, especificar vantagens e desvantagens.)
+#### Como será a avaliação da aplicação? Quais conjuntos de dados serão utilizados? Será necessário testar com usuários?
+
+
+
