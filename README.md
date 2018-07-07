@@ -6,7 +6,7 @@ Professor: Diogo Santana Martins
 | Nome           | RA       | 
 | -------------- | -------- | 
 | André Barbosa  | 11001814 | 
-| Iasmin         | 11018111 |
+| Iasmin Haro    | 11018111 |
 | Victor Fischer | 11009116 |
 | Lucas Oliveira | 11056816 |
 
