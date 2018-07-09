@@ -31,6 +31,6 @@
            (K - Copas) (K - Espadas) (K - Ouros) (K - Paus)))
 
 (define (baralho-mesa n-jogadores monte)
-  (cond [(<= n-jogadores 4 ) monte]
+  (cond [(<= n-jogadores 4 ) (shuffle monte)]
         [else (baralho-mesa (- n-jogadores 4) (append monte (baralho)))]))
 
