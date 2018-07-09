@@ -1,5 +1,7 @@
 #lang racket
 
+;Uso de lista ao invés de array, devido a facilidade do manuseio da mesma.
+
 (define (baralho)
   '((A - Copas) (A - Espadas) (A - Ouros) (A - Paus)
            (2 - Copas) (2 - Espadas) (2 - Ouros) (2 - Paus)
@@ -32,6 +34,3 @@
   (cond [(<= n-jogadores 4 ) monte]
         [else (baralho-mesa (- n-jogadores 4) (append monte (baralho)))]))
 
-
-
-(baralho-mesa 9 (baralho))
