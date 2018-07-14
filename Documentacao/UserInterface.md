@@ -25,13 +25,23 @@ Comandos -> Idéia original
 * \reordenar [A A A A A A A A A ]
 
 -------------------------------
-Convenção de nomes nos Casos de Uso - não necessáriamente será essa a convenção seguida para o projeto final:
+# CASOS DE USO
+
+## Convenção de nomes nos Casos de Uso
+ Essa convenção pode ser alterada para o projeto final. Só está aqui para facilitar a leitura dos casos de uso.
+
 * Comandos na lingua inglesa, separados por hifem quando necessário.
 * Naipes sempre no plural:
 	* Paus
 	* Copas
 	* Espadas
 	* Ouros
+* VOCE: quando escrito com maiusculas, representa o apelido do jogador que está sendo "observado" através daquele Caso de Uso.
+* Você: quando minúsculo, representa a palavra 'Você' impressa pelo terminal.
+* game >: Textos impressos no terminal.
+* user >: Comandos digitados pelo usuário.
+* (parenteses): Quando numa impressão, significam parenteses. Quando fora, significam alguma ação que o jogador tomou que não envolve o sistema.
+* game > [pp] : Quando a primeira palavra impressa pelo jogo no terminal for o nome da sala entre colchetes, significa que o texto foi impresso para todos os jogadores.
 
 -------------------------------
 ## Caso de Uso - Criando servidor e iniciando um jogo
@@ -135,7 +145,7 @@ Suponha os jogadores conectados A, B, C e VOCE. Acompanharemos a visão do clien
 
 	game >  [pp] Agora é a vez de VOCE.
 	
-	game >  [pp] B está decidindo se compra do monte ou do lixo.
+	game >  [pp] VOCE está decidindo se compra do monte ou do lixo.
 
 	game >  Sua vez.
 	game >  Suas cartas são:
@@ -150,6 +160,8 @@ Suponha os jogadores conectados A, B, C e VOCE. Acompanharemos a visão do clien
 	game >  [pp] VOCE comprou do lixo: (Q, Espadas).
 	
 	game >  [pp] VOCE está escolhendo a carta para descartar.
+
+	game > Você comprou: (Q, Espadas).
 
 	game >  Escolha a carta de descarte. Digite o número da carta, ou os dados da carta (<valor> <naipe>)
 	game >  Suas cartas são:
@@ -174,3 +186,52 @@ Comandos utilizados dentro do jogo
 * <valor> <numero>: indica a carta que será descartada pelo jogador.
 * lixo: indica que o jogador comprará a carta do lixo
 * monte: indica que o jogador comprará a carta do lixo
+
+-------------------------------
+## Caso de Uso - Bater Convencionalmente
+
+O jogador VOCE pode bater após comprar uma carta:
+
+	game >  [pp] VOCE está decidindo se compra do monte ou do lixo.
+
+	game >  Sua vez.
+	game >  Suas cartas são:
+	game >  [1] (A, Copas)    [2] (A, Espadas)  [3] (A, Ouros)
+	game >  [4] (5, Ouros)    [5] (6, Ouros)    [6] (7, Ouros)
+	game >  [7] (J, Espadas)  [8] (Q, Espadas)  [9] (K, Paus)
+	game >  A carta no lixo é (4, Ouros).
+
+	game >  Você deseja comprar do monte ou do lixo? (digite 'monte'/'lixo' para escolher).
+
+	game > monte
+
+	game >  [pp] VOCE comprou do monte.
+	game >  [pp] VOCE está escolhendo a carta para descartar.
+
+	game > Você comprou: (K, Espadas).
+
+	game >  Você pode bater. Digite 'bater' para bater. Ou descarte uma carta para continuar o jogo.
+
+	game >  Escolha a carta de descarte. Digite o número da carta, ou os dados da carta (<valor> <naipe>)
+	game >  Suas cartas são:
+	game >   [0] (K, Espadas)
+	game >   [1] (A, Copas)    [2] (A, Espadas)  [3] (A, Ouros)
+	game >   [4] (5, Ouros)    [5] (6, Ouros)    [6] (7, Ouros)
+	game >   [7] (J, Espadas)  [8] (Q, Espadas)  [9] (K, Paus)
+
+	user > bater
+
+	game >  [pp] O jogador VOCE bateu. As cartas de VOCE são:
+	game >  [pp] [0] (K, Espadas)
+	game >  [pp] [1] (A, Copas)    [2] (A, Espadas)  [3] (A, Ouros)
+	game >  [pp] [4] (5, Ouros)    [5] (6, Ouros)    [6] (7, Ouros)
+	game >  [pp] [7] (J, Espadas)  [8] (Q, Espadas)  [9] (K, Paus)
+
+	game >  Digite qualquer coisa para ser redirecionado à tela inicial.
+
+-------------------------------
+### Comandos novos nesse caso de uso.
+
+* bater: se o jogador estiver apto a bater, ele vence o jogo.
+
+-------------------------------
