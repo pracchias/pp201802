@@ -15,15 +15,23 @@ Além disso a interface precisa mostrar informações sobre o jogo:
 -------------------------------
 Comandos -> Idéia original
 
-\create [nome_da_sala]: cria uma sala nova
-\join [nome_da_sala]: ingressa em uma sala existente
-\pronto
-\comprar_baralho
-\comprar_lixo
-\descartar [A]
-\bater
-\reordenar [A A A A A A A A A ]
+* \create [nome_da_sala]: cria uma sala nova
+* \join [nome_da_sala]: ingressa em uma sala existente
+* \pronto
+* \comprar_baralho
+* \comprar_lixo
+* \descartar [A]
+* \bater
+* \reordenar [A A A A A A A A A ]
 
+-------------------------------
+Convenção de nomes nos Casos de Uso - não necessáriamente será essa a convenção seguida para o projeto final:
+* Comandos na lingua inglesa, separados por hifem quando necessário.
+* Naipes sempre no plural:
+	* Paus
+	* Copas
+	* Espadas
+	* Ouros
 
 -------------------------------
 ## Caso de Uso - Criando servidor e iniciando um jogo
@@ -96,3 +104,73 @@ Comandos utilizados dentro de uma sala
 * start
 
 -------------------------------
+## Caso de Uso - Sequencia no Jogo
+Suponha os jogadores conectados A, B, C e VOCE. Acompanharemos a visão do cliente VOCE:
+
+	game > Bem vindo ao jogo [pp].
+	game >  A ordem dos jogadores será:
+	game >  A, B, VOCE, C.
+	game >  Suas cartas são:
+	game >   [1] (A, Copas)    [2] (A, Espadas)  [3] (4, Ouros)
+	game >   [4] (5, Ouros)    [5] (5, Copas)    [6] (7, Ouros)
+	game >   [7] (J, Espadas)  [8] (J, Espadas)  [9] (K, Paus)
+
+	game >  [pp] O jogo começa com o jogador A.
+
+	game >  [pp] O jogador A comprou do monte.
+
+	game >  [pp] A está escolhendo a carta para descartar.
+	
+	game >  [pp] A descartou (7, Copas)
+
+	game >  [pp] Agora é a vez do jogador B.
+
+	game >  [pp] B está decidindo se compra do monte ou do lixo.
+
+	game >  [pp] B comprou do monte.
+
+	game >  [pp] B está escolhendo a carta para descartar.
+
+	game >  [pp] B descartou (Q, Espadas).
+
+	game >  [pp] Agora é a vez de VOCE.
+	
+	game >  [pp] B está decidindo se compra do monte ou do lixo.
+
+	game >  Sua vez.
+	game >  Suas cartas são:
+	game >   [1] (A, Copas)    [2] (A, Espadas)  [3] (4, Ouros)
+	game >   [4] (5, Ouros)    [5] (5, Copas)    [6] (7, Ouros)
+	game >   [7] (J, Espadas)  [8] (J, Espadas)  [9] (K, Paus)
+	game >  A carta no lixo é (Q, Espadas).
+	game >  Você deseja comprar do monte ou do lixo? (digite 'monte'/'lixo' para escolher).
+
+	user > lixo
+
+	game >  [pp] VOCE comprou do lixo: (Q, Espadas).
+	
+	game >  [pp] VOCE está escolhendo a carta para descartar.
+
+	game >  Escolha a carta de descarte. Digite o número da carta, ou os dados da carta (<valor> <naipe>)
+	game >  Suas cartas são:
+	game >   [0] (Q, Espadas)
+	game >   [1] (A, Copas)    [2] (A, Espadas)  [3] (4, Ouros)
+	game >   [4] (5, Ouros)    [5] (5, Copas)    [6] (7, Ouros)
+	game >   [7] (J, Espadas)  [8] (J, Espadas)  [9] (K, Paus)
+
+	user > 8   ;(ou então user > J Espadas)
+
+
+	game >  [pp] VOCE descartou (J, Espadas).
+
+	game >  [pp] Agora é a vez de C.
+
+	(segue repetindo até que um jogador possa bater)
+-------------------------------
+### Comandos nesse caso de uso.
+
+Comandos utilizados dentro do jogo
+* <numero>: indica a carta que será descartada pelo jogador.
+* <valor> <numero>: indica a carta que será descartada pelo jogador.
+* lixo: indica que o jogador comprará a carta do lixo
+* monte: indica que o jogador comprará a carta do lixo
