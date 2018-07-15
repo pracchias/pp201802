@@ -17,7 +17,8 @@ Novas funcionalidades:
 
 - Baralho: Nessa nova funcionalidade, foi criado o baralho, adotando o padrão ("Valor" - "Naipe"), onde, por princípio a função
 retorna a quantidade de 2 baralhos, com 52 cartas cada uma, visto que é o mínimo de cartas que um jogo necessita. Para a 
-construção da mesma, foi utilizada uma lista contendo todas as cartas, devido a facilidade de manipula-la.
+construção da mesma, foi utilizada uma lista contendo todas as cartas, devido a facilidade de manipula-la, utilizando apenas o
+"define" para atribuição da lista ao nome da função.
 
 - Quantidade de baralhos: Foi determinado que a cada faixa de 4 jogadores, dois baralhos seriam adicionados, ou seja de 4 
 jogadores para baixo haverão 2, enquanto de 5 a 8 haverão 4, e assim por diante. Para a criação dessa função, foi utilizado 
@@ -25,5 +26,7 @@ como parâmetros a quantidade de jogadores apenas, onde se é adicionado dois no
 inteira da equação (n jogadores/4), arredondando para cima (exemplo: 7/4 = 1,75 = 2, logo 2*2 baralhos). Um dos problemas 
 encontrados nessa parte, foi a inicial ideia do uso de array, onde a manipulação da mesma se mostrou mais delicada e dificultosa,
 sendo assim, como solução, escolhemos o uso de listas que, devido ao aprendido durante a disciplina, facilitou a conclusão da 
-nova funcionalidade sem novos impeditivos.
+nova funcionalidade sem novos impeditivos. Nessa função, foi utilizada a condicional "cond", a fim de identificar qual faixa de
+jogadores a partida se enquadrava, contendo duas opção, sendo uma a base que retorna o baralho com "shuffle" (para embaralhar 
+o monte), enquanto a outra contia uma recursão para somar mais baralhos ao monte até que a condição base fosse satisfeita.
 
