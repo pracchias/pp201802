@@ -15,10 +15,10 @@ problemas, etc.).
 
 Novas funcionalidades:
 
-- Baralho: Nessa nova funcionalidade, foi criado o baralho, adotando o padrão ("Valor" - "Naipe"), onde, por princípio a função
-retorna a quantidade de 2 baralhos, com 52 cartas cada uma, visto que é o mínimo de cartas que um jogo necessita. Para a 
-construção da mesma, foi utilizada uma lista contendo todas as cartas, devido a facilidade de manipula-la, utilizando apenas o
-"define" para atribuição da lista ao nome da função.
+- Baralho: Nessa nova funcionalidade, foi criado o baralho, adotando o padrão de uma lista de dois elementos do tipo 
+(Valor Naipe), onde, por princípio a função retorna a quantidade de 2 baralhos, com 52 cartas cada uma, visto que é o mínimo 
+de cartas que um jogo necessita. Para a construção da mesma, foi utilizada uma lista contendo todas as cartas, devido a 
+facilidade de manipula-la, utilizando apenas o "define" para atribuição da lista ao nome da função.
 
 - Quantidade de baralhos: Foi determinado que a cada faixa de 4 jogadores, dois baralhos seriam adicionados, ou seja de 4 
 jogadores para baixo haverão 2, enquanto de 5 a 8 haverão 4, e assim por diante. Para a criação dessa função, foi utilizado 
