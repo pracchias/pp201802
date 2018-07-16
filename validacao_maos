@@ -4,13 +4,22 @@
 ; verifica quando o jogador envia o comando \bater se a combinação
 ; de cartas na mão do jogador é válida
 
-; ex ( A 1 4 5 7 8 K A 2 ) - 9 cartas
-; ex ( A 3 4 9 8 10 J Q K A) - 10 cartas *quando compra do monte
+; ex '('(A Copas) '(1 Ouros) '(4 Espadas) '(5 Paus) '(7 Ouros) '(8 Espadas) '(K Ouros) '(A Paus) '(2 Espadas)) - 9 cartas
+; possibilidade de ter 10 cartas na mão quando retira do monte 
 
 ; - validar trincas ( 3 cartas de mesmo valor 3 naipes distintos podendo
 ; agregar uma carta de mesmo valor desde que tenha o mesmo naipe de uma das outras 3
-; ex '((5 - Copas) (5 - Ouros) (5 - Espadas) (5 - Espadas) ...) 
+; ex '(('5 Copas) '(5  Ouros) '(5  Espadas) '(5  Espadas) ...) 
 
 ; - validar sequencias:  3 ou mais cartas seguidas do mesmo naipe
-; ex '( (A- Copas) (2 - Copas ) (3 - Copas) (4 - Copas) ... )
+; ex '( '(A Copas) '(2  Copas ) '(3  Copas) '(4 - Copas) ... )
 
+; pegar naipe da carta 
+(define (naipe carta)
+   (cdr carta))
+
+; pegar valor da carta
+(define (valor carta)
+  (car carta))
+  
+  
