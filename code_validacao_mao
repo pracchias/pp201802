@@ -15,7 +15,7 @@
 ;mao representada como:
 '(((2)(COPAS))((2)(ESPADAS))((2)(OUROS))((4)(ESPADAS))((3)(OUROS))((10)(PAUS))((9)(COPAS))((8)(PAUS))((10)(ESPADAS)))
 
-
+;*AINDA VALIDANDO*
 (define (verifica-num-trincas mao)
   (let percorre ([n (length mao)][lst2 null][lst1 mao])
     (cond [(and (= n 0)(= (length lst2) 0))(display "não há trincas")] ;
