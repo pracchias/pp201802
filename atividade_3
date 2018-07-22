@@ -1,0 +1,31 @@
+
+Objetivos:
+
+• Entrega do protótipo final da aplicação;
+• Apresentação dos resultados obtidos.
+
+O que entregar:
+
+• Documento de complementação, reportando como os problemas identificados na Parte 2
+foram solucionados;
+• Vídeo de visão geral do sistema, de no máximo de 8 minutos, ilustrando os seguintes
+
+Tópicos:
+– motivação (por quê a aplicação é útil);
+– definição do problema (qual problema a aplicação se propõe a resolver);
+– demonstração (como as funcionalidades da aplicação solucionam o problema).
+
+A parte de demonstração pode deverá ser um tutorial do sistema, mostrando as principais
+funcionalidades, e apresentando os testes e respectivos resultados.
+
+• Relatório final, em formato PDF, de no máximo 6 páginas, reportando o projeto e especificando a contribuição de cada participante.
+O relatório deverá ser apresentado em formato de artigo, de acordo com o modelo da SBC (http://tinyurl.com/ sbc-template-artigos).
+Deverá conter pelo menos as seguintes seções:
+– Introdução
+– Definição do problema
+– Arquitetura e implementação
+– Avaliação (testes realizados, com ou sem usuários, com os testes de execução e
+screenshots);
+– Discussão (e.g. reflexões, dificuldades, lições aprendidas, etc.);
+– Detalhamento das contribuições de cada integrante para o projeto;
+– Link para o repositório do projeto.
