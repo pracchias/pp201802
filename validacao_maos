@@ -6,29 +6,11 @@ desde que seja dobrada (do mesmo naipe). Exemplo: 5 de Copas, 5 de Paus, 5 de Ou
 
 - Sequência: três ou mais cartas seguidas, do mesmo naipe. O Ás, nas sequências, pode servir acima do Rei ou abaixo do Dois.
 
-
-Possibilidades de trincas na mão:
+- Possibilidades de trincas na mão:
 
 1) Uma trinca: ( A A A 5 10 3 2 8 7 )
 2) Duas trincas:  ( A A A 2 2 2 3 10 8 )
 3) Três trincas: ( A A A 3 3 3 10 10 10 )
 
-; ex '('(A Copas) '(1 Ouros) '(4 Espadas) '(5 Paus) '(7 Ouros) '(8 Espadas) '(K Ouros) '(A Paus) '(2 Espadas)) - 9 cartas
-; possibilidade de ter 10 cartas na mão quando retira do monte 
-
-; - validar trincas ( 3 cartas de mesmo valor 3 naipes distintos podendo
-; agregar uma carta de mesmo valor desde que tenha o mesmo naipe de uma das outras 3
-; ex '(('5 Copas) '(5  Ouros) '(5  Espadas) '(5  Espadas) ...) 
-
-; - validar sequencias:  3 ou mais cartas seguidas do mesmo naipe
-; ex '( '(A Copas) '(2  Copas ) '(3  Copas) '(4 - Copas) ... )
-
-; pegar naipe da carta 
-(define (naipe carta)
-   (cdr carta))
-
-; pegar valor da carta
-(define (valor carta)
-  (car carta))
   
   
