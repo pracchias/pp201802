@@ -30,7 +30,7 @@
           [(or (equal? (first lst1)(third lst1))(equal? (first lst1)(first lst2))) (percorre (- n 1) (cons (first lst1) lst2) (rest lst1))]
           [else (percorre (- n 1) lst2 (rest lst1))])))
 
-;ln 23: recece as cartas da mão no formato indicado acima
+;ln 23: recebe as cartas da mão no formato indicado acima
 ;ln 25: se percorrer toda a lista e não tiver nada na lst2, retorna "nao ha trincas"
 ;ln 26: se percorrer toda a lista e tiver elementos em lst2, divide o tamanho de lst2 por 3
 ;ln 27: se lst2 não tiver nenhum elemento, então coloca o primeiro elemento de lst1 nela
