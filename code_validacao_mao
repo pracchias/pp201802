@@ -15,14 +15,27 @@
 ;mao representada como:
 '((2)(COPAS)(2)(ESPADAS)(2)(OUROS)(4)(ESPADAS)(3)(OUROS)(10)(PAUS)(9)(COPAS)(8)(PAUS)(10)(ESPADAS)))
 
-;*AINDA VALIDANDO* VERIFICA O NUMERO DE TRINCAS NA MAO CONSIDERANDO APENAS TRINCAS COM 3 CARTAS
+;AINDA VALIDANDO
+;NAO CONSIDERA AS LETRAS A, Q, K, J 
+;APENAS TRINCAS COM 3 CARTAS
+;VERIFICA O NUMERO DE TRINCAS NA MAO CONSIDERANDO
+
 (define (verifica-num-trincas mao)
   (let percorre ([n (length mao)][lst2 null][lst1 mao])
     (cond [(and (= n 0)(= (length lst2) 0))(display "não há trincas")] 
           [(and (= n 0)(not (= (length lst2) 0)))(/ (length lst2) 3)]
           [(= (length lst2) 0)(percorre (- n 1) (cons (first lst1) lst2) (rest lst1))]
-          [(and (or (= (length lst1) 1)(= (length lst1) 2))(equal? (first lst1)(first lst2)))(cons (first lst1) lst2)]
+          [(and (or (= (length lst1) 1)(= (length lst1) 2))(equal? (first lst1)(first lst2)))(percorre (- n 1) (cons (first lst1) lst2) (rest lst1))]
           [(and (or (= (length lst1) 1)(= (length lst1) 2))(not(equal? (first lst1)(first lst2))))(percorre (- n 1) lst2 (rest lst1))]
           [(or (equal? (first lst1)(third lst1))(equal? (first lst1)(first lst2))) (percorre (- n 1) (cons (first lst1) lst2) (rest lst1))]
           [else (percorre (- n 1) lst2 (rest lst1))])))
 
+;ln 23: recece as cartas da mão no formato indicado acima
+;ln 25: se percorrer toda a lista e não tiver nada na lst2, retorna "nao ha trincas"
+;ln 26: se percorrer toda a lista e tiver elementos em lst2, divide o tamanho de lst2 por 3
+;ln 27: se lst2 não tiver nenhum elemento, então coloca o primeiro elemento de lst1 nela
+;ln 28: se lst1 tiver 1 ou 2 elementos, compara o primeiro da lst1 com o primeiro da lst2, se for igual adiciona o primeiro da lst1 em lst2
+;ln 29: faz a mesma comparação acima e se não for igual apenas retorna a lst2 como está
+;ln 30: se lst1 tiver mais de dois elementos então ele comprar o primeiro elemento com o terceiro, e com o primeiro da lst2
+        se for igual ele adiciona na lst2
+;ln 31: caso nenhum das situações ocorra ele decrementa o n, passa a lst2 como está, e retira o primeiro da lst1
