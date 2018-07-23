@@ -13,9 +13,9 @@
 ;considerando uma mão ordenada
 ;verificar numero de trincas
 ;mao representada como:
-'(((2)(COPAS))((2)(ESPADAS))((2)(OUROS))((4)(ESPADAS))((3)(OUROS))((10)(PAUS))((9)(COPAS))((8)(PAUS))((10)(ESPADAS)))
+'((2)(COPAS)(2)(ESPADAS)(2)(OUROS)(4)(ESPADAS)(3)(OUROS)(10)(PAUS)(9)(COPAS)(8)(PAUS)(10)(ESPADAS)))
 
-;*AINDA VALIDANDO*
+;*AINDA VALIDANDO* VERIFICA O NUMERO DE TRINCAS NA MAO CONSIDERANDO APENAS TRINCAS COM 3 CARTAS
 (define (verifica-num-trincas mao)
   (let percorre ([n (length mao)][lst2 null][lst1 mao])
     (cond [(and (= n 0)(= (length lst2) 0))(display "não há trincas")] 
