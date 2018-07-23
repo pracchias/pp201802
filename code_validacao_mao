@@ -18,13 +18,11 @@
 ;*AINDA VALIDANDO*
 (define (verifica-num-trincas mao)
   (let percorre ([n (length mao)][lst2 null][lst1 mao])
-    (cond [(and (= n 0)(= (length lst2) 0))(display "não há trincas")] ;
-          [(and (= n 0)(not (= (length lst2) 0)))(/ (length lst2) 3)] ;
-          [(equal? (car(first mao))(car(second mao))) (percorre (- n 1) (cons (car(first mao)) lst2) (rest mao))]; 
-          [else (percorre (- n 1) (lst2) (rest mao))]))); 
+    (cond [(and (= n 0)(= (length lst2) 0))(display "não há trincas")] 
+          [(and (= n 0)(not (= (length lst2) 0)))(/ (length lst2) 3)]
+          [(= (length lst2) 0)(percorre (- n 1) (cons (first lst1) lst2) (rest lst1))]
+          [(and (or (= (length lst1) 1)(= (length lst1) 2))(equal? (first lst1)(first lst2)))(cons (first lst1) lst2)]
+          [(and (or (= (length lst1) 1)(= (length lst1) 2))(not(equal? (first lst1)(first lst2))))(percorre (- n 1) lst2 (rest lst1))]
+          [(or (equal? (first lst1)(third lst1))(equal? (first lst1)(first lst2))) (percorre (- n 1) (cons (first lst1) lst2) (rest lst1))]
+          [else (percorre (- n 1) lst2 (rest lst1))])))
 
-
-;ln 20: se percorre toda a lst1 (mao) e não ha nada na lst2, nao há trincas
-;ln 21: se percorre a lst2 e ela nao está vazia então mostra o numero de trincas na mao
-;ln 22: se o valor da primeira carta é igual ao valor da segunda carta então coloca o valor da primeira na lst2
-;ln 23: se nada do acima ocorrer ele tira o primeiro valor da lst1 (mao), passa a lst2,  e passa a mao sem o valor ja verificado 
