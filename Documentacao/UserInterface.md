@@ -182,8 +182,8 @@ Suponha os jogadores conectados A, B, C e VOCE. Acompanharemos a visão do clien
 ### Comandos nesse caso de uso.
 
 Comandos utilizados dentro do jogo
-* <numero>: indica a carta que será descartada pelo jogador.
-* <valor> <numero>: indica a carta que será descartada pelo jogador.
+* $numero$: indica a carta que será descartada pelo jogador.
+* $valor$ $numero$: indica a carta que será descartada pelo jogador.
 * lixo: indica que o jogador comprará a carta do lixo
 * monte: indica que o jogador comprará a carta do lixo
 
