@@ -1,6 +1,18 @@
 #lang racket/base
 (require racket/format)
  
+(define (mensagem-teste) (println "Mensagem teste"))
+(define (thread-teste)
+  (thread (lambda ()
+    (define (loop)
+      (sleep 10)
+      (mensagem-teste)
+      (loop))
+    (loop))))
+
+(define (checa-servidor) 
+)
+
 
 (define-namespace-anchor a) 
 (define ns (namespace-anchor->namespace a))
@@ -40,7 +52,9 @@
 ; 
 
 
-(define (le-inputs pref) (read (open-input-string (string-append "(" pref (~a (read)) ")"))))
+(define (le-inputs pref)
+    (read 
+        (open-input-string (string-append "(" pref (~a (read)) ")"))))
 
 (define 
     (handle-entrada prefixo)
@@ -57,4 +71,5 @@
 (define (main-thread) (lambda () (entrada "es-")))
 
 (display "Bem vindo. Digite init-game, minha-vez, passo ou sair.\n")
+
 (entrada "es-")
