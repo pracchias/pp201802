@@ -16,6 +16,9 @@
 (provide imprime-endereco-e-porta-servidor)
 (provide imprime-endereco-e-porta-cliente)
 
+(provide conecta-em)
+(provide espera-conexao-em)
+
 
 ; ----------------------------------------------
 
@@ -27,6 +30,14 @@
     (newline out)
     (flush-output out))
 
+(define (conecta-em servername porta) 
+    (define-values (in out) (tcp-connect servername porta))
+    (cons in out))
+
+(define (espera-conexao-em porta)
+    (define listener (tcp-listen porta))
+    (define-values (in out) (tcp-accept listener))
+    (cons in out))
 
 
 (define (endereco-conexao  conexao)
