@@ -4,6 +4,7 @@
 (provide server-name)
 (provide portas-jogo)
 (provide conecta-em)
+(provide porta-jogo)
 (provide espera-conexao-em)
 (provide get-in)
 (provide get-out)
@@ -12,6 +13,7 @@
 
 (define server-name "localhost")
 (define portas-jogo '(39055 39002 39003 39004 39005 39006))
+(define porta-jogo 45002)
 (define  porta-distribuidor 45241)
 
 (define (conecta-em servername porta) 
