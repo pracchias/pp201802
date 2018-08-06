@@ -7,7 +7,6 @@ Professor: Diogo Santana Martins
 | -------------- | -------- | 
 | André Barbosa  | 11001814 | 
 | Iasmin Haro    | 11018111 |
-| Victor Fischer | 11009116 |
 | Lucas Oliveira | 11056816 |
 
 ## Referencias:
