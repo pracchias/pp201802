@@ -8,6 +8,7 @@
 (provide espera-conexao-em)
 (provide get-in)
 (provide get-out)
+(provide tenta-conectar)
 
 (provide  porta-distribuidor)
 
@@ -27,3 +28,16 @@
 
 (define (get-in portas) (car portas))
 (define (get-out portas) (cdr portas))
+
+
+
+
+
+(define (tenta-conectar server lista-de-portas)
+    (cond [(null? lista-de-portas) (display "Não há vagas nesse servidor. Tente outro.\n ")]
+        [else 
+            (with-handlers ([exn:fail? (lambda (exn) (tenta-conectar server (cdr lista-de-portas)))]) ; se não conseguir conectar, tenta conectar na proxima porta.
+                (printf "Tentando conectar na porta ~a\n" (car lista-de-portas))
+                (define-values (sin sout) (tcp-connect server-name (car lista-de-portas)))
+                (printf "Conectado em ~a\n" (car lista-de-portas))
+                (cons sin sout))]))
