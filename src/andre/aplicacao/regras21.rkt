@@ -18,19 +18,11 @@
 ; Muda o baralho do servidor.
 (define atualiiza-baralho baralho)
 
-; Dá uma carta nova ao jogador
+; Retorna um baralho e uma mão após a ocorrencia de uma compra
 (define (comprar baralho mao)
-    (atualiza-baralho (cdr baralho))
-    (define  nova-mao (adiciona-na-mao (car baralho) mao))
-    (mostra-valor-da-mao mao))
-
-(define (adiciona-na-mao carta mao)
-    (cons carta mao))
-
-
-; Informa que o jogador não vai mais comprar cartas
-(define (parar) )
-
+    (define nova-mao (cons (first baralho) mao))
+    (define novo-baralho (cdr baralho))
+    (values novo-baralho nova-mao))
 
 ; Melhorar: CONSIDERAR o A COMO 1 ou 10.
 (define (mostra-valor-da-mao mao)
@@ -55,9 +47,17 @@
     (> (valor-da-mao mao) 21))
 
 
+
 (define (dealer-compra mao-dealer) (comprar baralho mao-dealer))
 (define (dealer-para) (avaliia-vencedor))
 (define (dealer-tem-menos-que-17?) (< 18 (9valor-da-mao mao-dealler)))
 (define (dealer-tem-a-valendo-10?) (tem-as? mao-ddealer))
 (define (dealer-continua-comprando?)
     (or (dealer-tem-menos-que-17?) (dealer-tem-a-valendo-10?) )))
+
+
+(define (comprar baralho mao)
+    (define nova-mao (cons (first baralho) mao))
+    (define novo-baralho (cdr baralho))
+    (values novo-baralho nova-mao))
+

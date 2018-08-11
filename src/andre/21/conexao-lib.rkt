@@ -10,7 +10,7 @@
 (provide tenta-conectar)
 (provide envia-mensagem)
 
-(displayln "Carregando biblioteca de conexao")
+(displayln "Carregando biblioteca de conexao.\n")
 
 (define server-name "localhost")
 (define porta-jogo 45002)
@@ -24,10 +24,10 @@
 (define (get-out portas) (cdr portas))
 
 (define (envia-mensagem msg out)
-    (printf "Enviando msg ~a na porta ~a \n" msg out)
+ ;;;;   (printf "Enviando msg ~a na porta ~a \n" msg out)
     (write msg out)
-    (flush-output out)
-    (printf "Mensagem enviada.\n"))
+    (flush-output out) )
+ ;;;;   (printf "Mensagem enviada.\n"))
 
 (define (tenta-conectar server porta)
     (with-handlers ([exn:fail? (lambda (exn) (displayln "Não foi possível conectar no servidor."))])

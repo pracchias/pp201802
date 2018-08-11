@@ -20,11 +20,11 @@
 ;;;     6) Cliente aguarda a próxima vez do jogador.
 ;;;     7) Repete 4-5-6 até o fim do jogo.
 ;;;     8) Anuncia vencedor. Fecha o jogo.aguarda
-(displayln "Versao 0.0")
+(displayln "\tVersao 0.3\n")
 
 (define (conecta-ao-servidor)  
     (define sockets (tenta-conectar server-name porta-jogo))
-    (if (pair? sockets) (display "Sucesso na Conexão.\n") ((display "Falha na Conexão.\n") (exit 1)))
+    (if (pair? sockets) (display "Sucesso na Conexao. ") ((display "Falha na Conexão.\n") (exit 1)))
     sockets)
     
 (define (inicia-jogo)
@@ -32,7 +32,8 @@
  	(let 	([conexao (conecta-ao-servidor)])	
 		(let ([entrada (get-in conexao)]
 		      [saida (get-out conexao)])
-		  (displayln "Conexão efetuada com sucesso.")
+		  (displayln "Portas obtidas com sucesso.\n\n")
+		  (displayln "Iniciando jogo.")
 		  (roda-jogo entrada saida))))
 		   
 ; Esse método é o loop principal do jogo.
@@ -41,14 +42,14 @@
   	(define mensagem (read entrada))
 
 	; Agora ele exibe as cartas do jogador e do dealer  
-	(display "Suas cartas: ")	
+	(display "\n\tSuas cartas:\n\t")	
   	(exibe-suas-cartas mensagem)
-	(display "Cartas do DEALER: ")
+	(display "\n\tCartas do DEALER:\n\t")
 	(exibe-cartas-do-dealer mensagem)
 
 	; O sistema verifica o estado do jogo e reage de acordo.
 	(cond [(jogo-acabou? mensagem) (game-over mensagem) (envia-sair saida)]
-	      [(jogador-parou? mensagem) (espera-dealer saida)]
+	      [(jogador-parou? mensagem) (espera-dealer entrada saida)]
 	      [else 	(tentar-responder saida)
 	 		(displayln "---- ---- ---- \n")
 	      		(roda-jogo entrada saida)]))
@@ -57,8 +58,9 @@
 
 
 (define (game-over mensagem)
-	(cond [(jogador-venceu? mensagem) (displayln "Parabens! Você venceu.")]
-		[(jogador-estourou? mensagem) (displayln "ESTOURO! Você perdeu.")]
+	(displayln "\n\n\tFIM DE JOGO\n")
+	(cond [(jogador-venceu? mensagem) (displayln "Parabens! Voce venceu.")]
+		[(jogador-estourou? mensagem) (displayln "ESTOURO! Voce perdeu.")]
 		[(dealer-venceu? mensagem) (displayln "A vitoria dessa vez foi para o DEALER.")])
 	(displayln "Obrigado por ter jogado."))
 		
@@ -75,10 +77,22 @@
 		[(respondeu-sair? resposta) (envia-sair saida)]
 		[else (displayln "Desculpa, comando não reconhecido.") (tentar-responder saida)]))
 	
+
 (define (espera-dealer entrada saida)
+	(displayln "")
+	(display "\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r")
 	(display "Esperando dealer...")
+	(sleep 0.8)
+	(display "\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r")
+	(display "                              ")
+	(sleep 0.5)
+	(display "\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r")
+	(display "Esperando dealer...")
+	(sleep 0.8)
+	(display "\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r                                   ")
 	(envia-stop saida)
 	(roda-jogo entrada saida))
+
 	
 (define (sair) (displayln "Esperamos que tenha se divertido. Obrigado.") (exit))
 
@@ -94,14 +108,13 @@
 	(sair))
 
 (define (exibe-suas-cartas mensagem)
-	(write (get-cartas-jogador mensagem))
-	(printf ". Valor da mao: ~a\n" (valor-da-mao (get-cartas-jogador mensagem)))
-	(displayln ""))
+	(define suas-cartas (get-cartas-jogador mensagem))
+	(printf "Valor da mao: ~a. Cartas: ~a\n" (valor-da-mao suas-cartas) suas-cartas))
 	
 (define (exibe-cartas-do-dealer mensagem)
-	(write (get-cartas-dealer mensagem))
-	(printf ". Valor da mao: ~a\n" (valor-da-mao (get-cartas-dealer mensagem)))
-	(displayln ""))
+	(define cartas-dealer (get-cartas-dealer mensagem))
+	(printf "Valor da mao: ~a. Cartas: ~a\n" (valor-da-mao cartas-dealer) cartas-dealer))
+	
 
 
 #|(define (teste)
