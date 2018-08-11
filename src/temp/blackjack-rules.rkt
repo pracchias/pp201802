@@ -47,14 +47,14 @@
 
 ; Pega o valor de uma carta
 (define (get-num carta)
-    (display "Obtendo NUM da carta ") (write carta) (displayln "...")
+;    (display "Obtendo NUM da carta ") (write carta) (displayln "...")
 ;    (car carta))
   ;  (cond [(list? carta)
       (cond [(list? carta)
             (cond [(eq? (car carta) 'J) 10]
                   [(eq? (car carta) 'Q) 10]
                   [(eq? (car carta) 'K) 10]
-            ;      [(eq? (car carta) 'A) 1]
+                  [(eq? (car carta) 'A) 1]
                   [(number? (car carta)) (car carta)]
     ;      [(string? carta)
     ;        (define valor (substring carta 1))
@@ -102,4 +102,10 @@
 
 
 (define (compara-maos mao-jogador mao-dealer)
-    (if (< (valor-da-mao mao-jogador) (valor-da-mao mao-dealer)) 'dealer-venceu 'jogador-venceu))
+    (define v-jogador (valor-da-mao mao-jogador))
+    (define v-dealer (valor-da-mao mao-dealer))
+    (cond [(> v-jogador 21) 'dealer-venceu]
+        [(> v-dealer 21) 'jogador-venceu]
+        [(< v-jogador v-dealer) 'dealer-venceu]
+        [(> v-jogador v-dealer) 'jogador-venceu]
+        [(= v-jogador v-dealer) 'empate]))
