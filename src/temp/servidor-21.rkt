@@ -14,7 +14,7 @@
     (define-values (baralho mao-jogador mao-dealer) (distribui-cartas))
     (define estado-jogo 'running)
     (envia-mensagem (prepara-mensagem mao-jogador mao-dealer estado-jogo) saida)
-    (processa-resposta entrada saida (baralho) mao-jogador mao-dealer estado-jogo))
+    (processa-resposta entrada saida baralho mao-jogador mao-dealer estado-jogo))
     ;(displayln "Fim do teste1"))
 
 (define (distribui-cartas)

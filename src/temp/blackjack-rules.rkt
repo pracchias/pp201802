@@ -12,7 +12,7 @@
 
 ; Baralho para testes.
 (define (novo-baralho) (baralho))
-(define carta-nula "00")
+(define carta-nula '(0 00))
 
 ; Retorna um baralho e uma mão após a ocorrencia de uma compra
 (define (comprar baralho mao)
@@ -39,26 +39,29 @@
 
 ; Calcula o valor de uma carta
 (define (get-valor carta)
-   (display "Calculando valor da carta ") (write carta) (displayln "")
+   ;(display "Calculando valor da carta ") (write carta) (displayln "")
     (define num (get-num carta))
     (cond [(number? num) num] ; se for um numero, o valor é o proprio numero
-        [(or (= num 'A) (= num "A")) 1]         ; se for um as, o valor é A. Esse valor é corrigido para 10 ao se analisar a mao.
+        [(= num "A") 1]         ; se for um as, o valor é A. Esse valor é corrigido para 10 ao se analisar a mao.
         [else 10]))    ; se for uma outra figura, o valor é 10.
 
 ; Pega o valor de uma carta
 (define (get-num carta)
     (display "Obtendo NUM da carta ") (write carta) (displayln "...")
-    (define val (car carta))
-    (cond [(pair? val)
-                (val)]
-          [(string? val)
-            (if (string->number val) (string->number val) val)]
-        [(number? val) val]
-        [(= val 'A) "A"]
-        [(= val 'Q) "Q"]
-        [(= val 'K) "K"]
-        [(= val 'J) "J"]
-        [else "VALOR NAO ENCONTRADO."]))
+;    (car carta))
+  ;  (cond [(list? carta)
+      (cond [(list? carta)
+            (cond [(eq? (car carta) 'J) 10]
+                  [(eq? (car carta) 'Q) 10]
+                  [(eq? (car carta) 'K) 10]
+            ;      [(eq? (car carta) 'A) 1]
+                  [(number? (car carta)) (car carta)]
+    ;      [(string? carta)
+    ;        (define valor (substring carta 1))
+    ;        (if (string->number valor) (string->number valor) valor)]
+    ;    [(number? carta) carta]
+        [else "VALOR NAO ENCONTRADO."])]
+          [else carta]))
 
 
 ; Diz se a mão já estourou
