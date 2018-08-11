@@ -42,7 +42,7 @@
    ;(display "Calculando valor da carta ") (write carta) (displayln "")
     (define num (get-num carta))
     (cond [(number? num) num] ; se for um numero, o valor é o proprio numero
-        [(= num "A") 1]         ; se for um as, o valor é A. Esse valor é corrigido para 10 ao se analisar a mao.
+        [(eq? num 'A) 1]         ; se for um as, o valor é A. Esse valor é corrigido para 10 ao se analisar a mao.
         [else 10]))    ; se for uma outra figura, o valor é 10.
 
 ; Pega o valor de uma carta
