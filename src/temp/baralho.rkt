@@ -26,5 +26,5 @@
 (define K
   13)
 
-(define (baralho) (baralho-total))
-  ;(shuffle (baralho-total)))
+(define (baralho); (baralho-total))
+  (shuffle (baralho-total)))

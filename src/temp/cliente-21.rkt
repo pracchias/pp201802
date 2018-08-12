@@ -61,7 +61,8 @@
 	(displayln "\n\n\tFIM DE JOGO\n")
 	(cond [(jogador-venceu? mensagem) (displayln "Parabens! Voce venceu.")]
 		[(jogador-estourou? mensagem) (displayln "ESTOURO! Voce perdeu.")]
-		[(dealer-venceu? mensagem) (displayln "A vitoria dessa vez foi para o DEALER.")])
+		[(dealer-venceu? mensagem) (displayln "A vitoria dessa vez foi para o DEALER.")]
+		[(empate? mensagem) (displayln "Quase. Foi um EMPATE!")])
 	(displayln "Obrigado por ter jogado."))
 		
 

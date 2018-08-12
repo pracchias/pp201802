@@ -13,7 +13,7 @@
 (provide jogador-venceu? )
 (provide dealer-venceu?)
 (provide jogador-estourou?)
-
+(provide empate?)
 (provide get-estado)
 (provide get-cartas-jogador)
 (provide get-cartas-dealer)
@@ -43,12 +43,15 @@
 (define (dealer-venceu? mensagem)
 		(compara (get-estado mensagem) 'dealer-venceu))
 
+(define (empate? mensagem)
+	(compara (get-estado mensagem) 'empate))
 (define (jogo-acabou? mensagem)
 	(define state (get-estado mensagem))
 	(or
 		(compara state 'jogador-venceu)
 		(compara state 'jogador-estourou)
-		(compara state 'dealer-venceu)))
+		(compara state 'dealer-venceu)
+		(compara state 'empate)))
 
 
 (define (get-cartas-jogador mensagem) (first mensagem))
