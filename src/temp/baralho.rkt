@@ -17,14 +17,5 @@
               (Q Copas) (Q Espadas) (Q Ouros) (Q Paus)
               (K Copas) (K Espadas) (K Ouros) (K Paus)))
 
-(define J
-  11)
-
-(define Q
-  12)
-
-(define K
-  13)
-
 (define (baralho); (baralho-total))
   (shuffle (baralho-total)))
