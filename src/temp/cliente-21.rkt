@@ -46,7 +46,8 @@
   	(exibe-suas-cartas mensagem)
 	(display "\n\tCartas do DEALER:\n\t")
 	(exibe-cartas-do-dealer mensagem)
-
+;	(display "\n\tEstado atual:\n\t")
+;	(display (get-estado mensagem))
 	; O sistema verifica o estado do jogo e reage de acordo.
 	(cond [(jogo-acabou? mensagem) (game-over mensagem) (envia-sair saida)]
 	      [(jogador-parou? mensagem) (espera-dealer entrada saida)]

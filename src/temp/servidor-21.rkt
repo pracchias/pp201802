@@ -46,7 +46,7 @@
     (define-values (novo-baralho nova-mao-dealer estado-dealer) (ia-dealer baralho mao-dealer))
 
     (define novo-estado
-        (cond [(mao-estourou? mao-dealer) 'jogador-ganhou]
+        (cond [(mao-estourou? mao-dealer) 'jogador-venceu]
              [(compara estado-dealer 'dealer-parou) (compara-maos mao-jogador nova-mao-dealer)]
              [else 'jogador-parou]))
 

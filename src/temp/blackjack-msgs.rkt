@@ -29,6 +29,7 @@
 	(or (compara resposta 'sair) (compara resposta "sair")))
 
 (define (compara resposta esperado)
+;	(printf "\n\tComparando ~a com ~a.\n" resposta esperado)
 	(equal? resposta esperado))
 
 (define (jogador-parou? mensagem)
